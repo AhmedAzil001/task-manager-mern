@@ -11,16 +11,11 @@ export default auth = (req, res, next) => {
   try {
     const token = authorization.split(" ")[1];
     const decoded = jwt.verify(token, JWT_SECRET);
-    if (!decoded) {
-      return res.status(401).json({
-        message: "Invalid token",
-      });
-    }
     req.userId = decoded._id;
     next();
   } catch (error) {
-    return res.status(500).status({
-      message: error.message,
+    return res.status(401).json({
+      message: "Unauthorised : no token found",
     });
   }
 };
