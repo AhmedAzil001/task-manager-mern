@@ -1,1 +1,1 @@
-export const JWT_SECRET = "HELLOAZILAHMED"
+export const JWT_SECRET = "Taskmanager"
